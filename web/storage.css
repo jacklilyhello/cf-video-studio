@@ -1,0 +1,44 @@
+.storage-page .storage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.storage-page article .toolbar {
+  margin-bottom: 0;
+}
+.storage-page article h3 {
+  margin-bottom: 5px;
+}
+.storage-page table td {
+  vertical-align: top;
+  white-space: normal;
+}
+.storage-page details > summary,
+.deletion-dialog details > summary {
+  cursor: pointer;
+  font-size: 12px;
+  opacity: 0.8;
+}
+.storage-page details table {
+  margin-top: 12px;
+}
+.deletion-dialog input[type="radio"] {
+  accent-color: var(--public-brand, #3a8c87);
+  width: 17px;
+  height: 17px;
+  min-height: 17px;
+  flex-shrink: 0;
+  padding: 0;
+}
+.deletion-dialog .field-label input {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+}
+.deletion-dialog .warning-panel p {
+  overflow-wrap: anywhere;
+}
+.deletion-dialog .modal-actions {
+  flex-wrap: wrap;
+}

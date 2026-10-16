@@ -1,0 +1,126 @@
+.playback-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.playback-stat-grid-compact {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.playback-stat-grid .stat-card {
+  min-width: 0;
+}
+.playback-stat-grid .stat-card strong {
+  overflow-wrap: anywhere;
+}
+.playback-stat-grid .stat-card > span {
+  display: block;
+  margin-top: 7px;
+}
+.playback-filters {
+  align-items: end;
+}
+.playback-filters > label {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 150px;
+  max-width: 380px;
+  font-size: 13px;
+}
+.playback-filters select {
+  width: 100%;
+  min-width: 0;
+}
+.playback-chart {
+  width: 100%;
+  overflow: hidden;
+}
+.playback-chart svg {
+  display: block;
+  width: 100%;
+  min-height: 180px;
+}
+.playback-chart-grid {
+  stroke: currentColor;
+  opacity: 0.12;
+}
+.playback-chart-label {
+  fill: currentColor;
+  opacity: 0.65;
+  font-size: 10px;
+}
+.playback-chart-line {
+  stroke: var(--public-brand, #3a8c87);
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+.playback-chart-dot {
+  fill: var(--public-brand, #3a8c87);
+}
+.playback-distribution-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.playback-distribution > div:first-child {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  justify-content: space-between;
+}
+.playback-distribution span {
+  overflow-wrap: anywhere;
+}
+.playback-meter {
+  height: 7px;
+  margin-top: 6px;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.playback-meter > span {
+  display: block;
+  height: 100%;
+  background: var(--public-brand, #3a8c87);
+  border-radius: 5px;
+}
+.playback-video-title {
+  min-width: 160px;
+  max-width: 350px;
+  overflow-wrap: anywhere;
+}
+.playback-session-table td {
+  vertical-align: top;
+}
+.playback-session-detail-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+  margin: 0;
+}
+.playback-session-detail-list dt {
+  font-size: 12px;
+  opacity: 0.65;
+  margin-bottom: 5px;
+}
+.playback-session-detail-list dd {
+  margin: 0;
+  font-size: 13px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 1000px) {
+  .playback-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .playback-distribution-grid,
+  .playback-session-detail-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .playback-filters > label {
+    max-width: none;
+  }
+}

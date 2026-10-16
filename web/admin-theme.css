@@ -1,0 +1,902 @@
+/* Administration shares Moonwater tokens and the public theme preference. */
+:is(.admin-app, .admin-login) {
+  --admin-warning: #71532f;
+  --admin-on-accent: #ffffff;
+  --admin-on-danger: #ffffff;
+  --admin-backdrop: #173b4d66;
+  color: var(--public-text);
+  background: var(--public-bg);
+}
+html[data-public-theme="dark"] :is(.admin-app, .admin-login) {
+  --admin-warning: #e9d1b5;
+  --admin-on-accent: #18313d;
+  --admin-on-danger: #341923;
+  --admin-backdrop: #071820c9;
+}
+.admin-app {
+  background:
+    radial-gradient(ellipse at 95% 0%, var(--public-soft), transparent 55%),
+    var(--public-bg);
+}
+.admin-app .sidebar {
+  background: var(--public-surface);
+  border-color: var(--public-border);
+  box-shadow: 8px 0 35px var(--public-shadow);
+}
+.admin-app .sidebar > .brand {
+  min-width: 0;
+  max-width: calc(100% - 12px);
+  margin-bottom: 38px;
+  align-items: flex-start;
+}
+.admin-app .sidebar .brand > span:last-child {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  font-size: 19px;
+  line-height: 1.5;
+}
+.admin-app .sidebar-label {
+  color: var(--public-muted);
+  font-size: 10px;
+  letter-spacing: 1.6px;
+}
+.admin-app .sidebar-link {
+  color: var(--public-muted);
+  font-size: 13px;
+  min-height: 45px;
+}
+.admin-app .sidebar-link:hover,
+.admin-app .sidebar-link.active {
+  color: var(--public-accent);
+  background: var(--public-hover);
+}
+.admin-app .sidebar-link.active {
+  border-color: var(--public-border);
+}
+.admin-app .sidebar-link > svg,
+.admin-app .sidebar-link.active > svg {
+  color: currentColor;
+}
+.admin-app .sidebar-dot {
+  background: var(--public-accent);
+}
+.admin-app .sidebar-bottom {
+  padding-top: 28px;
+}
+.admin-app .admin-identity strong {
+  color: var(--public-text);
+  font-size: 12px;
+}
+.admin-app .admin-identity small {
+  color: var(--public-muted);
+  font-size: 10px;
+}
+.admin-app .admin-header {
+  border-color: var(--public-border);
+  background: var(--public-glass);
+  min-height: 76px;
+  height: auto;
+}
+.admin-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.admin-app .breadcrumb {
+  color: var(--public-muted);
+  font-size: 12px;
+}
+.admin-app .breadcrumb > span {
+  color: var(--public-border);
+}
+.admin-app .secure-label {
+  color: var(--public-muted);
+  font-size: 11px;
+}
+.admin-app .secure-label svg {
+  color: var(--green);
+}
+.admin-app .page-heading h1,
+.admin-app .detail-top h2 {
+  color: var(--public-text);
+  font-family: "Noto Serif SC", "Songti SC", STSong, Georgia, serif;
+  letter-spacing: 0.6px;
+}
+.admin-app .page-heading p {
+  color: var(--public-muted);
+  font-size: 13px;
+}
+.admin-app .page-heading .eyebrow {
+  color: var(--public-accent);
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+.admin-app .admin-footer {
+  color: var(--public-muted);
+  border-color: var(--public-border);
+  font-size: 10px;
+  letter-spacing: 0.8px;
+}
+.admin-app .welcome-card {
+  background:
+    radial-gradient(ellipse at 100% 100%, var(--public-hover), transparent 65%),
+    var(--public-surface);
+  border-color: var(--public-border);
+  box-shadow: 0 12px 38px var(--public-shadow);
+}
+.admin-app .welcome-card p {
+  color: var(--public-muted);
+  font-size: 13px;
+}
+.admin-app .welcome-card .eyebrow {
+  color: var(--public-accent);
+  font-size: 10px;
+}
+.admin-app .welcome-icon {
+  color: var(--public-brand);
+  opacity: 0.6;
+}
+.admin-app .welcome-icon svg {
+  filter: none;
+}
+:is(.admin-app, .admin-login) :is(.panel, .stat-card, .job-card) {
+  background: var(--public-surface);
+  border-color: var(--public-border);
+  box-shadow: 0 7px 25px var(--public-shadow);
+}
+:is(.admin-app, .admin-login)
+  :is(.subpanel, .version-row, .detail-stats, .data-box) {
+  background: var(--public-soft);
+  border-color: var(--public-border);
+  color: var(--public-text);
+}
+:is(.admin-app, .admin-login) :is(input, select, textarea) {
+  background: var(--public-raised);
+  color: var(--public-text);
+  border-color: var(--public-border);
+  font-size: 13px;
+  accent-color: var(--public-accent);
+}
+:is(.admin-app, .admin-login) :is(input, textarea)::placeholder {
+  color: var(--public-muted);
+  opacity: 0.85;
+}
+:is(.admin-app, .admin-login) :is(input, select, textarea):focus {
+  border-color: var(--public-accent);
+  box-shadow: 0 0 0 3px var(--public-soft);
+}
+:is(.admin-app, .admin-login)
+  :is(button, a, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--public-accent);
+  outline-offset: 4px;
+}
+:is(.admin-app, .admin-login) .button {
+  background: var(--public-raised);
+  color: var(--public-text);
+  border-color: var(--public-border);
+  min-height: 42px;
+}
+:is(.admin-app, .admin-login) .button:hover:not(:disabled) {
+  background: var(--public-hover);
+  border-color: var(--public-brand);
+}
+:is(.admin-app, .admin-login) .button.primary {
+  background: var(--public-accent);
+  color: var(--admin-on-accent);
+  border-color: var(--public-accent);
+  box-shadow: 0 4px 16px var(--public-shadow);
+}
+:is(.admin-app, .admin-login) .button.primary:hover:not(:disabled) {
+  background: var(--public-accent);
+  border-color: var(--public-accent);
+  box-shadow: 0 0 0 3px var(--public-soft);
+}
+:is(.admin-app, .admin-login) .button.danger {
+  color: var(--admin-on-danger);
+  background: var(--public-danger);
+  border-color: var(--public-danger);
+}
+:is(.admin-app, .admin-login) .button.danger:hover:not(:disabled) {
+  background: var(--public-danger);
+  box-shadow: 0 0 0 3px var(--public-soft);
+}
+:is(.admin-app, .admin-login) .button.danger-outline {
+  color: var(--public-danger);
+  border-color: var(--public-danger);
+  background: color-mix(
+    in srgb,
+    var(--public-danger) 5%,
+    var(--public-surface)
+  );
+}
+:is(.admin-app, .admin-login) .button.small {
+  min-height: 35px;
+}
+:is(.admin-app, .admin-login) :is(.text-button, .icon-button) {
+  color: var(--public-accent);
+}
+:is(.admin-app, .admin-login) .text-button:hover:not(:disabled) {
+  color: var(--public-text);
+}
+:is(.admin-app, .admin-login) .icon-button:hover:not(:disabled) {
+  color: var(--public-accent);
+  background: var(--public-hover);
+}
+.admin-app .search {
+  color: var(--public-muted);
+  background: var(--public-raised);
+  border-color: var(--public-border);
+}
+.admin-app .search input {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+.admin-app .search:focus-within {
+  border-color: var(--public-accent);
+  box-shadow: 0 0 0 3px var(--public-soft);
+}
+:is(.admin-app, .admin-login)
+  :is(.field-label, .checkbox, .form-option, details, .details) {
+  color: var(--public-text);
+}
+:is(.admin-app, .admin-login) :is(summary, .eyebrow) {
+  color: var(--public-accent);
+}
+.admin-app :is(.stat-top, .stat-card small, .pagination) {
+  color: var(--public-muted);
+  font-size: 12px;
+}
+.admin-app
+  :is(
+    .form-option,
+    .version-row p,
+    .version-row small,
+    .upload-body .spread > span,
+    .upload-body .text-button
+  ) {
+  font-size: 12px;
+}
+.admin-app .stat-value {
+  color: var(--public-text);
+}
+:is(.admin-app, .admin-login)
+  :is(
+    .stat-icon,
+    .avatar,
+    .empty-icon,
+    .file-icon,
+    .upload-symbol,
+    .job-symbol,
+    .mini-cover,
+    .detail-cover,
+    .login-lock
+  ) {
+  color: var(--public-accent);
+  background: var(--public-soft);
+  border-color: var(--public-border);
+}
+:is(.admin-app, .admin-login) :is(.count, .unit-pill, .version-pill) {
+  color: var(--public-accent);
+  background: var(--public-soft);
+  border-color: var(--public-border);
+}
+:is(.admin-app, .admin-login) :is(.notice, .resource-observation) {
+  color: var(--public-text);
+  background: var(--public-soft);
+  border-color: var(--public-border);
+}
+:is(.admin-app, .admin-login) .notice > svg {
+  color: var(--public-accent);
+}
+:is(.admin-app, .admin-login) :is(.error-box, .danger-zone) {
+  color: var(--public-danger);
+  background: color-mix(
+    in srgb,
+    var(--public-danger) 5%,
+    var(--public-surface)
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--public-danger) 40%,
+    var(--public-border)
+  );
+}
+.admin-app :is(.danger-zone strong, .danger-zone p) {
+  color: var(--public-danger);
+}
+:is(.admin-app, .admin-login) .error-box small {
+  opacity: 1;
+}
+:is(.admin-app, .admin-login) .warning-panel {
+  color: var(--admin-warning);
+  background: color-mix(in srgb, var(--public-gold) 12%, var(--public-surface));
+  border-color: color-mix(
+    in srgb,
+    var(--public-gold) 55%,
+    var(--public-border)
+  );
+}
+:is(.admin-app, .admin-login) .success-box {
+  color: var(--green);
+  background: color-mix(in srgb, var(--green) 5%, var(--public-surface));
+  border-color: color-mix(in srgb, var(--green) 40%, var(--public-border));
+}
+:is(.admin-app, .admin-login) :is(.empty, .loading) {
+  color: var(--public-muted);
+}
+:is(.admin-app, .admin-login) .empty h3 {
+  color: var(--public-text);
+}
+:is(.admin-app, .admin-login) .spinner {
+  border-color: var(--public-border);
+  border-top-color: var(--public-accent);
+}
+.admin-app .tabs {
+  border-color: var(--public-border);
+  overflow-x: auto;
+}
+.admin-app .tabs > button {
+  color: var(--public-muted);
+  white-space: nowrap;
+}
+.admin-app .tabs > button.active {
+  color: var(--public-accent);
+  border-color: var(--public-accent);
+}
+.admin-app .tabs > button > span {
+  color: var(--public-accent);
+  border-color: var(--public-border);
+}
+.admin-app table {
+  color: var(--public-text);
+  font-size: 12px;
+}
+.admin-app th {
+  color: var(--public-muted);
+  background: var(--public-soft);
+  border-color: var(--public-border);
+  font-size: 12px;
+}
+.admin-app .storage-table td,
+.admin-app .storage-table .text-button {
+  font-size: 12px;
+}
+.admin-app td {
+  border-color: var(--public-border);
+}
+.admin-app tbody tr:hover {
+  background: color-mix(in srgb, var(--public-hover) 55%, transparent);
+}
+.admin-app :is(.table-video strong, .upload-body strong, .detail-stats strong) {
+  color: var(--public-text);
+  font-size: 13px;
+}
+.admin-app
+  :is(
+    td > small,
+    .table-video small,
+    .upload-body small,
+    .detail-stats small,
+    .job-card > .spread,
+    .object-path,
+    .source-url,
+    .resource-source,
+    .resource-source small,
+    .resource-remaining small,
+    .setting-row p,
+    .log-entry small
+  ) {
+  color: var(--public-muted);
+  font-size: 11px;
+}
+.admin-app :is(.detail-stats > div, .info-list > div, .upload-row) {
+  border-color: var(--public-border);
+}
+.admin-app
+  :is(.info-list dd, .resource-remaining strong, .storage-summary strong) {
+  color: var(--public-text);
+}
+.admin-app :is(.storage-summary small, .resource-card .info-list > div) {
+  color: var(--public-muted);
+  font-size: 12px;
+}
+.admin-app .dropzone {
+  background:
+    radial-gradient(ellipse at 50% 0%, var(--public-hover), transparent 75%),
+    var(--public-surface);
+  border-color: var(--public-brand);
+}
+.admin-app .dropzone.dragging {
+  background: var(--public-hover);
+  border-color: var(--public-accent);
+}
+.admin-app :is(.dropzone p, .dropzone small) {
+  color: var(--public-muted);
+  font-size: 12px;
+}
+.admin-app .dropzone .button:focus-within {
+  outline: 2px solid var(--public-accent);
+}
+.admin-app .progress,
+.admin-app .progress::-webkit-progress-bar {
+  background: var(--public-border);
+}
+.admin-app .progress::-webkit-progress-value {
+  background: var(--public-brand);
+}
+.admin-app .progress::-moz-progress-bar {
+  background: var(--public-brand);
+}
+.admin-app .badge {
+  color: var(--public-muted);
+  background: var(--public-soft);
+  border-color: var(--public-border);
+  font-size: 11px;
+}
+.admin-app
+  :is(
+    .badge-ready,
+    .badge-verified,
+    .badge-complete,
+    .badge-completed,
+    .badge-published
+  ) {
+  color: var(--green);
+  border-color: color-mix(in srgb, var(--green) 40%, var(--public-border));
+}
+.admin-app
+  :is(
+    .badge-uploading,
+    .badge-running,
+    .badge-queued,
+    .badge-uploaded,
+    .badge-awaiting_confirmation,
+    .badge-needs_transcode
+  ) {
+  color: var(--public-accent);
+}
+.admin-app :is(.badge-failed, .badge-missing) {
+  color: var(--public-danger);
+  border-color: color-mix(
+    in srgb,
+    var(--public-danger) 40%,
+    var(--public-border)
+  );
+}
+.admin-app :is(.badge-stopping, .badge-expired, .stop-state) {
+  color: var(--admin-warning);
+}
+.admin-app :is(.stop-state, .referenced) {
+  font-size: 11px;
+}
+.admin-app .stop-state.verified {
+  color: var(--green);
+}
+.admin-app :is(.job-card strong.mono, .log-entry strong, .setting-row label) {
+  color: var(--public-text);
+  font-size: 12px;
+}
+.admin-app :is(.job-details, .deletion-objects, .log-entry, .setting-row) {
+  border-color: var(--public-border);
+}
+.admin-app :is(.referenced, .log-entry > summary:after) {
+  color: var(--public-accent);
+}
+.admin-app .log-level {
+  color: var(--public-accent);
+  background: var(--public-soft);
+  border-color: var(--public-border);
+  font-size: 10px;
+}
+.admin-app .level-error {
+  color: var(--public-danger);
+  border-color: color-mix(
+    in srgb,
+    var(--public-danger) 40%,
+    var(--public-border)
+  );
+}
+.admin-app .level-warn {
+  color: var(--admin-warning);
+  border-color: color-mix(
+    in srgb,
+    var(--public-gold) 50%,
+    var(--public-border)
+  );
+}
+.admin-app .unknown-progress {
+  background: var(--public-soft);
+  color: var(--public-muted);
+  border-color: var(--public-border);
+}
+.admin-app .site-logo-preview img {
+  background: var(--public-raised);
+}
+:is(.admin-app, .admin-login) .modal-backdrop {
+  background: var(--admin-backdrop);
+}
+:is(.admin-app, .admin-login) .modal {
+  color: var(--public-text);
+  background: var(--public-surface);
+  border-color: var(--public-border);
+  box-shadow: 0 25px 90px var(--public-shadow);
+}
+:is(.admin-app, .admin-login) :is(.modal-header, .modal-actions) {
+  border-color: var(--public-border);
+}
+:is(.admin-app, .admin-login) .modal > p {
+  color: var(--public-muted);
+}
+.admin-login.login-page {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 85% 12%, var(--public-soft), transparent 55%),
+    radial-gradient(ellipse at 0% 95%, var(--public-hover), transparent 45%),
+    var(--public-bg);
+}
+.admin-login-theme {
+  position: absolute;
+  top: 22px;
+  right: 30px;
+}
+.admin-login .login-back {
+  color: var(--public-accent);
+  font-size: 12px;
+}
+.admin-login .login-card {
+  background: var(--public-surface);
+  border-color: var(--public-border);
+  box-shadow: 0 20px 70px var(--public-shadow);
+}
+.admin-login .login-card h1 {
+  font-family: "Noto Serif SC", "Songti SC", STSong, Georgia, serif;
+  letter-spacing: 0.6px;
+}
+.admin-login .login-card > p,
+.admin-login .login-security {
+  color: var(--public-muted);
+  font-size: 12px;
+}
+.admin-login .login-security {
+  border-color: var(--public-border);
+}
+.admin-login > small {
+  color: var(--public-muted);
+  font-size: 10px;
+}
+/* Resource cards keep attribution beside each metric and official link. */
+.admin-resource-page > .section-heading {
+  align-items: flex-start;
+}
+.admin-resource-page > .section-heading .eyebrow {
+  margin-bottom: 6px;
+}
+.admin-resource-page > .section-heading .muted {
+  font-size: 13px;
+  margin: 10px 0 0;
+}
+.admin-app .resource-summary > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+}
+.admin-app .resource-summary strong {
+  font-size: 15px;
+}
+.admin-app .resource-summary > div > span {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  color: var(--public-muted);
+  overflow-wrap: anywhere;
+}
+.admin-app .resource-summary > p {
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 12px 0 0;
+}
+.resource-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.admin-app .resource-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.admin-app .resource-card > .section-heading {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.admin-app .resource-card > .section-heading h2 {
+  font-size: 21px;
+  margin-top: 5px;
+}
+.admin-app .resource-card > .section-heading .eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.8px;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.admin-app .resource-card > .section-heading .badge {
+  margin-top: 3px;
+}
+.admin-app .resource-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+}
+.admin-app .resource-metric {
+  padding: 15px;
+  border: 1px solid var(--public-border);
+  border-radius: 10px;
+  background: var(--public-soft);
+  min-width: 0;
+}
+.admin-app .resource-metric dt {
+  color: var(--public-muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.admin-app .resource-metric dd {
+  margin: 9px 0;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.4;
+  font-variant-numeric: tabular-nums;
+  color: var(--public-text);
+  overflow-wrap: anywhere;
+}
+.admin-app .resource-metric .resource-text-value {
+  font-size: 14px;
+  line-height: 1.8;
+}
+.admin-app .resource-metric small {
+  display: block;
+  color: var(--public-muted);
+  font-size: 11px;
+}
+.admin-app .resource-metric p {
+  font-size: 11px;
+  line-height: 1.8;
+  margin: 8px 0 0;
+}
+.admin-app .resource-storage-limit {
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid var(--public-border);
+}
+.admin-app .resource-storage-limit > .section-heading {
+  margin-bottom: 12px;
+  font-size: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.admin-app .resource-storage-limit > .section-heading > span {
+  color: var(--public-muted);
+  font-size: 11px;
+}
+.admin-app .resource-storage-limit progress {
+  appearance: none;
+  -webkit-appearance: none;
+  display: block;
+  width: 100%;
+  height: 7px;
+  border: 0;
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--public-border);
+  color: var(--public-brand);
+}
+.admin-app .resource-storage-limit progress::-webkit-progress-bar {
+  background: var(--public-border);
+}
+.admin-app .resource-storage-limit progress::-webkit-progress-value {
+  background: var(--public-brand);
+}
+.admin-app .resource-storage-limit progress::-moz-progress-bar {
+  background: var(--public-brand);
+}
+.admin-app .resource-storage-limit p,
+.admin-app .resource-note {
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 12px 0 0;
+}
+.admin-app .resource-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 20px;
+  margin-top: auto;
+}
+.admin-app .resource-links .button {
+  white-space: normal;
+  text-align: left;
+  justify-content: flex-start;
+  min-height: 44px;
+}
+.admin-app .resource-links p {
+  font-size: 11px;
+  line-height: 1.8;
+  margin: 7px 0 0;
+}
+.admin-app .resource-diagnostics {
+  margin-top: 18px;
+  border-top: 1px solid var(--public-border);
+  padding-top: 4px;
+}
+.admin-app .resource-diagnostics > summary {
+  font-size: 12px;
+}
+.admin-app .resource-diagnostics td {
+  min-width: 90px;
+}
+.admin-app .resource-diagnostics td:last-child {
+  min-width: 190px;
+}
+.admin-app .badge-warning {
+  color: var(--admin-warning);
+  border-color: color-mix(
+    in srgb,
+    var(--public-gold) 50%,
+    var(--public-border)
+  );
+}
+@media (max-width: 980px) {
+  .resource-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .admin-header-actions {
+    gap: 12px;
+  }
+  .admin-app .sidebar .brand > span:last-child {
+    font-size: 16px;
+  }
+}
+@media (max-width: 720px) {
+  .admin-app .admin-header {
+    min-height: 72px;
+    padding-left: 102px;
+  }
+  .admin-app .breadcrumb {
+    font-size: 11px;
+  }
+  .admin-app .breadcrumb > span {
+    margin: 0 6px;
+  }
+  .admin-app .secure-label {
+    display: none;
+  }
+  .admin-app .mobile-menu {
+    background: var(--public-surface);
+    min-height: 42px;
+    top: 15px;
+    font-size: 12px;
+    border-color: var(--public-border);
+    z-index: 25;
+  }
+  .admin-app .sidebar-overlay {
+    background: var(--admin-backdrop);
+  }
+  .admin-app .sidebar {
+    overflow-y: auto;
+    padding-top: 77px;
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+  }
+  .admin-app .sidebar > .brand {
+    margin-bottom: 25px;
+  }
+  .admin-app .sidebar .brand > span:last-child {
+    font-size: 19px;
+  }
+  .admin-app .admin-content {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .admin-app .admin-footer {
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 10px;
+  }
+  .admin-app .admin-footer > span {
+    font-size: 10px;
+  }
+  .admin-app .welcome-card p {
+    font-size: 12px;
+  }
+  .admin-app .section-heading {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .admin-app .page-heading {
+    align-items: flex-start;
+  }
+  .admin-app .version-pill {
+    font-size: 10px;
+  }
+  .admin-app .info-list > div {
+    gap: 14px;
+  }
+  .admin-app .info-list dt {
+    flex-shrink: 1;
+  }
+  .admin-app .setting-row {
+    flex-wrap: wrap;
+  }
+  .admin-app .setting-row input {
+    width: 100%;
+  }
+  .admin-app .log-details {
+    padding-left: 0;
+  }
+  .admin-app .modal-actions {
+    flex-wrap: wrap;
+  }
+  .admin-app .modal-actions > .button {
+    flex: 1;
+  }
+  .admin-login-theme {
+    top: 17px;
+    right: 18px;
+  }
+  .admin-login .login-back {
+    left: 18px;
+  }
+}
+@media (max-width: 410px) {
+  .admin-app .resource-metrics {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .admin-app .resource-links,
+  .admin-app .resource-links > div,
+  .admin-app .resource-links .button {
+    width: 100%;
+  }
+  .admin-app .admin-header {
+    padding-left: 95px;
+    padding-right: 14px;
+    gap: 8px;
+  }
+  .admin-app .breadcrumb {
+    font-size: 10px;
+  }
+  .admin-app .breadcrumb > span {
+    margin: 0 3px;
+  }
+  .admin-app .admin-header .theme-toggle {
+    padding: 8px;
+    min-width: 40px;
+  }
+  .admin-app .admin-header .theme-toggle span {
+    display: none;
+  }
+  .admin-app .stat-card {
+    padding: 15px;
+  }
+  .admin-app .stat-top,
+  .admin-app .stat-card small {
+    font-size: 11px;
+  }
+  .admin-app
+    :is(
+      .form-option,
+      .version-row p,
+      .version-row small,
+      .upload-body .spread > span,
+      .upload-body .text-button
+    ) {
+    font-size: 12px;
+  }
+  .admin-app .stat-value {
+    font-size: 25px;
+  }
+}

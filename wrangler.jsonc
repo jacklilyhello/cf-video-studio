@@ -1,0 +1,61 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cf-video-hub",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-13",
+  "compatibility_flags": ["nodejs_compat"],
+  "keep_vars": true,
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "not_found_handling": "single-page-application",
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["Coordinator", "Processor"] },
+  ],
+  "env": {
+    "test": {
+      "name": "cf-video-hub-test",
+      "workers_dev": true,
+      "preview_urls": false,
+      "version_metadata": { "binding": "VERSION" },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "cf-video-hub-test",
+          // Local development only. release.mjs discovers an existing Worker's
+          // binding, or use CF_VIDEO_CONFIG for a private deployment config.
+          "database_id": "00000000-0000-0000-0000-000000000000",
+          "migrations_dir": "migrations",
+        },
+      ],
+      "r2_buckets": [
+        { "binding": "MEDIA", "bucket_name": "cf-video-hub-test" },
+      ],
+      "durable_objects": {
+        "bindings": [
+          { "name": "COORDINATOR", "class_name": "Coordinator" },
+          { "name": "PROCESSOR", "class_name": "Processor" },
+        ],
+      },
+      "containers": [
+        {
+          "class_name": "Processor",
+          "scheduling_policy": "durable_object",
+          "observability": { "enabled": false },
+          "images": {
+            "processor": {
+              "dockerfile": "./container/Dockerfile",
+              "build_context": ".",
+            },
+          },
+        },
+      ],
+      "triggers": { "crons": ["* * * * *"] },
+      "observability": {
+        "enabled": false,
+      },
+    },
+  },
+}

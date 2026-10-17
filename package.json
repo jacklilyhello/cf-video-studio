@@ -1,0 +1,39 @@
+{
+  "name": "cf-video-studio",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.1"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "dev:worker": "wrangler dev --env test --enable-containers=false",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --root .",
+    "check": "npm run typecheck && npm test && npm run build",
+    "deploy:test": "npm run build && node scripts/release.mjs test",
+    "deploy:production": "npm run build && node scripts/release.mjs production",
+    "db:test": "node scripts/database.mjs test",
+    "release:test": "node scripts/release.mjs test",
+    "release:production": "node scripts/release.mjs production"
+  },
+  "dependencies": {
+    "hls.js": "1.7.3",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261013.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "jsonc-parser": "3.3.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.4",
+    "vitest": "5.0.4",
+    "wrangler": "4.150.0"
+  },
+  "license": "MIT"
+}

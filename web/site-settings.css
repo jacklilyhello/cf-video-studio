@@ -1,0 +1,55 @@
+.site-settings > form {
+  display: grid;
+  gap: 12px;
+}
+.site-settings > form > input {
+  width: 100%;
+}
+.site-indexing-choice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+.site-indexing-choice input {
+  min-height: auto;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--purple);
+}
+.site-logo-settings {
+  display: grid;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  margin-top: 28px;
+  padding-top: 24px;
+}
+.site-logo-preview {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  min-height: 112px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel-high);
+}
+.site-logo-preview img {
+  display: block;
+  width: 120px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #e9eeec;
+}
+.site-logo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.site-settings > .notice,
+.site-settings > .error-box,
+.site-settings > .success-text {
+  margin-top: 18px;
+}

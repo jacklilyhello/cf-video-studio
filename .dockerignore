@@ -1,0 +1,6 @@
+**
+!container/
+!container/Dockerfile
+!container/processor.mjs
+!container/LICENSES.md
+!LICENSE

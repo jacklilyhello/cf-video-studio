@@ -1,0 +1,18 @@
+.media-error-box p {
+  margin: 5px 0;
+}
+.media-error-box b {
+  font-weight: 600;
+}
+.media-error-details {
+  margin-top: 8px;
+  overflow-wrap: anywhere;
+}
+.media-error-details summary {
+  cursor: pointer;
+}
+.media-error-box button {
+  margin-top: 8px;
+  white-space: normal;
+  max-width: 100%;
+}
